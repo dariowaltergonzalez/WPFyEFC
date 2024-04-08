@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PasswordBoxAssistant.cs" />
     <Compile Include="Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>

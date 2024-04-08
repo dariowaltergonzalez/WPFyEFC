@@ -82,8 +82,8 @@ namespace WPF
 
             usuariosBox usuario = new usuariosBox();
             var nombre = txtNombre.Text.ToUpper();
-            //var pass = txtPassword.Password;
-            var pass = txtPassword.Text;
+            var pass = PasswordBox.Password;
+            //var pass = txtPassword.Text;
             var activo = chkActivo.IsChecked;
             var bloqueado = chkBloqueado.IsChecked;
             var suc_id = item.Id;
@@ -100,11 +100,11 @@ namespace WPF
                 db.SaveChanges();
             }
             LlenarGrilla();
-
-            MessageBox.Show("El registro se creo correctamente", "Alta de Usuario", MessageBoxButton.OK, MessageBoxImage.Information);
-
             dgUsuarios.Focus();
             dgUsuarios.SelectedIndex = 0;
+            PasswordBox.Password = "";
+
+            MessageBox.Show("El registro se creo correctamente", "Alta de Usuario", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
@@ -124,8 +124,8 @@ namespace WPF
 
                     usuario.Id = usuarioSelect.Id;
                     usuario.Nombre = txtNombre.Text.ToUpper();
-                    usuario.Pass = txtPassword.Text;
-                    //usuario.password = txtPassword.Password;
+                    //usuario.Pass = txtPassword.Text;
+                    usuario.Pass = PasswordBox.Password;
                     usuario.IdSucursal = item.Id;
                     usuario.Activo = (bool)chkActivo.IsChecked;
                     usuario.UsuarioBloqueado = (bool)chkBloqueado.IsChecked;
@@ -146,6 +146,7 @@ namespace WPF
                     LlenarGrilla();
                     dgUsuarios.Focus();
                     dgUsuarios.SelectedIndex = fila;
+                    PasswordBox.Password = "";
                     //txtPassword.Password = "";
                 }
             }
