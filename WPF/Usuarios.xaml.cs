@@ -102,7 +102,7 @@ namespace WPF
             LlenarGrilla();
             dgUsuarios.Focus();
             dgUsuarios.SelectedIndex = 0;
-            PasswordBox.Password = "";
+            //PasswordBox.Password = "";
 
             MessageBox.Show("El registro se creo correctamente", "Alta de Usuario", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -146,7 +146,7 @@ namespace WPF
                     LlenarGrilla();
                     dgUsuarios.Focus();
                     dgUsuarios.SelectedIndex = fila;
-                    PasswordBox.Password = "";
+                    //PasswordBox.Password = "";
                     //txtPassword.Password = "";
                 }
             }
