@@ -146,8 +146,6 @@ namespace WPF
                     LlenarGrilla();
                     dgUsuarios.Focus();
                     dgUsuarios.SelectedIndex = fila;
-                    //PasswordBox.Password = "";
-                    //txtPassword.Password = "";
                 }
             }
         }

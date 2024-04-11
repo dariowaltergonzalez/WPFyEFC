@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="DapperModel.sucursalesBox" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DapperModel.usuariosBox" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DapperModel.FK_usuariosBox_sucursalesBox" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DapperModel.rolesBox" Width="1.5" PointX="0.75" PointY="3.375" />
+        <AssociationConnector Association="DapperModel.rolesBoxusuariosBox" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

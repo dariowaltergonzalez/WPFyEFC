@@ -12,17 +12,18 @@ namespace EFC
     using System;
     using System.Collections.Generic;
     
-    public partial class usuariosBox
+    public partial class rolesBox
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public rolesBox()
+        {
+            this.usuariosBox = new HashSet<usuariosBox>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Pass { get; set; }
-        public Nullable<bool> Activo { get; set; }
-        public Nullable<bool> UsuarioBloqueado { get; set; }
-        public Nullable<int> IdSucursal { get; set; }
-        public Nullable<int> rolesBoxId { get; set; }
     
-        public virtual sucursalesBox sucursalesBox { get; set; }
-        public virtual rolesBox rolesBox { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<usuariosBox> usuariosBox { get; set; }
     }
 }

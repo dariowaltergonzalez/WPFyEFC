@@ -27,5 +27,6 @@ namespace EFC
     
         public virtual DbSet<sucursalesBox> sucursalesBox { get; set; }
         public virtual DbSet<usuariosBox> usuariosBox { get; set; }
+        public virtual DbSet<rolesBox> rolesBox { get; set; }
     }
 }
