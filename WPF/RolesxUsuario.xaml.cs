@@ -82,6 +82,8 @@ namespace WPF
                 var rol = (rolesBox)item;
                 MessageBox.Show($"Id:{rol.Id} Nombre: {rol.Nombre}");
             }
+
+            List<rolesBox> selectedCoasters = lstRoles.SelectedItems.Cast<rolesBox>().ToList();
         }
 
         private void btnSacar_Click(object sender, RoutedEventArgs e)
