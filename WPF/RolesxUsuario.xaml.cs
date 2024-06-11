@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -95,5 +96,34 @@ namespace WPF
             }
         }
 
+        private void txtNumero_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            string cadena = txtNumero.Text;
+            e.Handled = !AreAllValidNumericChars(e.Text, cadena);
+            base.OnPreviewTextInput(e);
+        }
+
+        private bool AreAllValidNumericChars(string str, string cadena)
+        {
+            foreach (char c in str)
+            {
+                if (c != '.')
+                {
+                    if (!Char.IsNumber(c)) return false;
+                }
+                else
+                {
+                    if (cadena.Contains(".") == true)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
