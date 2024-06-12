@@ -38,7 +38,7 @@
         <!--ItemsSource="{Binding nombre}"-->
 
         <TextBlock Grid.ColumnSpan="1" Margin="4,4,4,4" FontSize="20" Grid.Column="0" Grid.Row="2" Height="30" Width="50" Background="Gainsboro" VerticalAlignment="Center" HorizontalAlignment="Center">Roles</TextBlock>
-        <TextBox x:Name="txtNumero" Grid.Column="1" Grid.Row="2" PreviewTextInput="txtNumero_PreviewTextInput" ></TextBox>
+        <TextBox x:Name="txtNumero"  MaxLength="10" Grid.Column="1" Grid.Row="2" PreviewTextInput="txtNumero_PreviewTextInput" ></TextBox>
         <ListBox x:Name="lstRoles" SelectionMode="Multiple" Grid.Column="0" Grid.Row="3" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>

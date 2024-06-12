@@ -105,11 +105,23 @@ namespace WPF
 
         private bool AreAllValidNumericChars(string str, string cadena)
         {
+            char[] delimiterChars = { '.' };
+            int largo = 0;
+            if (cadena.Contains(".") == true) 
+            {
+                string[] segmentos = cadena.Split(delimiterChars);
+                largo = segmentos[1].Length;
+            }
+
             foreach (char c in str)
             {
                 if (c != '.')
-                {
+                {   
+
                     if (!Char.IsNumber(c)) return false;
+
+                    if (Char.IsNumber(c) && largo >= 2) return false;
+
                 }
                 else
                 {
