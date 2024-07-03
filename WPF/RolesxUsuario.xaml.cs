@@ -26,6 +26,7 @@ namespace WPF
         public List<usuariosBox> ListaUsuarios { get; set; }
         public List<rolesBox> ListaRoles { get; set; }
         //public List<roles_por_usuario> ListaRolesPorUsuario { get; set; }
+        public List<usuariosBox> ListaUsuarios2 { get; set; }
 
 
         public RolesxUsuario()
@@ -33,7 +34,17 @@ namespace WPF
             InitializeComponent();
             LlenarComboUsuario();
             LlenarListaRoles();
+            LlenarListaUsuario();
 
+        }
+
+        private void LlenarListaUsuario() 
+        {
+            using (DapperEntities DB = new DapperEntities())
+            {
+                ListaUsuarios2 = DB.usuariosBox.ToList();
+                lstListado.ItemsSource = ListaUsuarios2;
+            }
         }
 
         private void LlenarListaRoles()
@@ -136,6 +147,12 @@ namespace WPF
                 }
             }
             return true;
+        }
+
+        private void dtpFecha_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string fecha = dtpFecha.SelectedDate.ToString();
+            int hh = 0;
         }
     }
 }
