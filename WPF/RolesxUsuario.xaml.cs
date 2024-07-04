@@ -35,6 +35,14 @@ namespace WPF
             LlenarComboUsuario();
             LlenarListaRoles();
             LlenarListaUsuario();
+            LlenarLista2();
+
+        }
+        private void LlenarLista2()
+        {
+            lstListado2.Items.Add("12:00 a 16:00");
+            lstListado2.Items.Add("18:00 a 19:00");
+            lstListado2.Items.Add("19:30 a 23:30");
 
         }
 
