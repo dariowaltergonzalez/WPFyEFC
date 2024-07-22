@@ -172,10 +172,21 @@ namespace WPF
             // Las 2 carpetas de llaman...Importaciones de funciones....y...funciones/procedimientos almacenados
             using (DapperEntities DB = new DapperEntities())
             {
-                var retorno = DB.sp_usuariosbox_Insert("JHONY","PASS2222",true,false,1,1);
-                var qty = retorno.ToString();
+                // funciona ok
+                //var retorno = DB.sp_usuariosbox_Insert("JHONY","PASS2222",true,false,1,1);
+                //var qty = retorno.ToString();
+
+
+                // n o anda..ver..
+                //var listausuarios = DB.sp_usuariosbox_SelectAll(1);
+                //int qtyretorno = listausuarios.Count();
+
+                // n o anda..ver..
+                var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
+                var apellido = nombre.ToString() + " " + " CASTRO" ;
+
             }
-            
+
         }
     }
 }

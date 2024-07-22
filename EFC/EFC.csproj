@@ -69,6 +69,9 @@
     <Compile Include="rolesBox.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_usuariosbox_SelectAll_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="sucursalesBox.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
