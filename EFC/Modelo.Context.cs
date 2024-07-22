@@ -12,6 +12,8 @@ namespace EFC
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DapperEntities : DbContext
     {
@@ -28,5 +30,34 @@ namespace EFC
         public virtual DbSet<sucursalesBox> sucursalesBox { get; set; }
         public virtual DbSet<usuariosBox> usuariosBox { get; set; }
         public virtual DbSet<rolesBox> rolesBox { get; set; }
+    
+        public virtual int sp_usuariosbox_Insert(string nombre, string pass, Nullable<bool> activo, Nullable<bool> usuarioBloqueado, Nullable<int> idSucursal, Nullable<int> rolesBoxId)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var passParameter = pass != null ?
+                new ObjectParameter("Pass", pass) :
+                new ObjectParameter("Pass", typeof(string));
+    
+            var activoParameter = activo.HasValue ?
+                new ObjectParameter("Activo", activo) :
+                new ObjectParameter("Activo", typeof(bool));
+    
+            var usuarioBloqueadoParameter = usuarioBloqueado.HasValue ?
+                new ObjectParameter("UsuarioBloqueado", usuarioBloqueado) :
+                new ObjectParameter("UsuarioBloqueado", typeof(bool));
+    
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            var rolesBoxIdParameter = rolesBoxId.HasValue ?
+                new ObjectParameter("rolesBoxId", rolesBoxId) :
+                new ObjectParameter("rolesBoxId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_usuariosbox_Insert", nombreParameter, passParameter, activoParameter, usuarioBloqueadoParameter, idSucursalParameter, rolesBoxIdParameter);
+        }
     }
 }

@@ -1,0 +1,22 @@
+﻿
+--SELECT * FROM usuariosbox
+--SELECT * FROM [Dapper].[dbo].[sucursalesBox]
+--SELECT * FROM [Dapper].[dbo].[rolesBox]
+
+
+--EXEC sp_usuariosbox_Insert 'JOSE','556699',1,0,1,1
+ALTER Procedure [dbo].[sp_usuariosbox_Insert]
+	@Nombre nvarchar(50), 
+	@Pass nvarchar(50), 
+	@Activo bit,
+	@UsuarioBloqueado bit, 
+	@IdSucursal int,
+	@rolesBoxId int
+As
+Begin
+	
+	INSERT INTO usuariosbox (Nombre,Pass, Activo, UsuarioBloqueado, IdSucursal, rolesBoxId)
+	VALUES(@Nombre, @Pass, @Activo, @UsuarioBloqueado,@IdSucursal,@rolesBoxId)
+
+End
+GO

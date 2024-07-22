@@ -4,71 +4,79 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DapperModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="DapperModelStoreContainer">
-    <EntitySet Name="sucursalesBox" EntityType="DapperModel.Store.sucursalesBox" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="usuariosBox" EntityType="DapperModel.Store.usuariosBox" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="rolesBox" EntityType="DapperModel.Store.rolesBox" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_usuariosBox_sucursalesBox" Association="DapperModel.Store.FK_usuariosBox_sucursalesBox">
-      <End Role="sucursalesBox" EntitySet="sucursalesBox" />
-      <End Role="usuariosBox" EntitySet="usuariosBox" />
-    </AssociationSet>
-    <AssociationSet Name="rolesBoxusuariosBox" Association="DapperModel.Store.rolesBoxusuariosBox">
-      <End Role="rolesBox" EntitySet="rolesBox" />
-      <End Role="usuariosBox" EntitySet="usuariosBox" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="sucursalesBox">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="usuariosBox">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Pass" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Activo" Type="bit" Nullable="true" />
-    <Property Name="UsuarioBloqueado" Type="bit" Nullable="true" />
-    <Property Name="IdSucursal" Type="int" Nullable="true" />
-    <Property Name="rolesBoxId" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="rolesBox">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <Association Name="FK_usuariosBox_sucursalesBox">
-    <End Role="sucursalesBox" Type="DapperModel.Store.sucursalesBox" Multiplicity="0..1" />
-    <End Role="usuariosBox" Type="DapperModel.Store.usuariosBox" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sucursalesBox">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="usuariosBox">
-        <PropertyRef Name="IdSucursal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="rolesBoxusuariosBox">
-    <End Role="rolesBox" Type="DapperModel.Store.rolesBox" Multiplicity="0..1" />
-    <End Role="usuariosBox" Type="DapperModel.Store.usuariosBox" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="rolesBox">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="usuariosBox">
-        <PropertyRef Name="rolesBoxId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="DapperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="rolesBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sucursalesBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="usuariosBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioBloqueado" Type="bit" />
+          <Property Name="IdSucursal" Type="int" />
+          <Property Name="rolesBoxId" Type="int" />
+        </EntityType>
+        <Association Name="FK_rolesBoxusuariosBox">
+          <End Role="rolesBox" Type="Self.rolesBox" Multiplicity="0..1" />
+          <End Role="usuariosBox" Type="Self.usuariosBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolesBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuariosBox">
+              <PropertyRef Name="rolesBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuariosBox_sucursalesBox">
+          <End Role="sucursalesBox" Type="Self.sucursalesBox" Multiplicity="0..1" />
+          <End Role="usuariosBox" Type="Self.usuariosBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursalesBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuariosBox">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_usuariosbox_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="UsuarioBloqueado" Type="bit" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="rolesBoxId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DapperModelStoreContainer">
+          <EntitySet Name="rolesBox" EntityType="Self.rolesBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sucursalesBox" EntityType="Self.sucursalesBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuariosBox" EntityType="Self.usuariosBox" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_rolesBoxusuariosBox" Association="Self.FK_rolesBoxusuariosBox">
+            <End Role="rolesBox" EntitySet="rolesBox" />
+            <End Role="usuariosBox" EntitySet="usuariosBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuariosBox_sucursalesBox" Association="Self.FK_usuariosBox_sucursalesBox">
+            <End Role="sucursalesBox" EntitySet="sucursalesBox" />
+            <End Role="usuariosBox" EntitySet="usuariosBox" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DapperModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -118,13 +126,21 @@
             <End Role="rolesBox" EntitySet="rolesBox" />
             <End Role="usuariosBox" EntitySet="usuariosBox" />
           </AssociationSet>
+          <FunctionImport Name="sp_usuariosbox_Insert">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="UsuarioBloqueado" Mode="In" Type="Boolean" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="rolesBoxId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="rolesBox">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="usuariosBox" Relationship="DapperModel.rolesBoxusuariosBox" FromRole="rolesBox" ToRole="usuariosBox" />
         </EntityType>
         <Association Name="rolesBoxusuariosBox">
@@ -174,6 +190,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_usuariosbox_Insert" FunctionName="DapperModel.Store.sp_usuariosbox_Insert" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

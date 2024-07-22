@@ -162,5 +162,20 @@ namespace WPF
             string fecha = dtpFecha.SelectedDate.ToString();
             int hh = 0;
         }
+
+        private void btnEjecutarStore_Click(object sender, RoutedEventArgs e)
+        {
+
+            //funciona ok   ..retorna la cantidad de registros insertados
+            //con el Modelo.edmx abierto, seleccionar  del menu ..Ver..Otras Ventanas.. Explorador de Entity Data Model para poder ver el store sql de la base.
+            //si hacemos modificaciones en el store, hay que eliminarlo de 2 carpetas, guardar el modelo y volverlo a agregar.
+            // Las 2 carpetas de llaman...Importaciones de funciones....y...funciones/procedimientos almacenados
+            using (DapperEntities DB = new DapperEntities())
+            {
+                var retorno = DB.sp_usuariosbox_Insert("JHONY","PASS2222",true,false,1,1);
+                var qty = retorno.ToString();
+            }
+            
+        }
     }
 }

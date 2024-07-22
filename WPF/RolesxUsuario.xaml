@@ -58,6 +58,7 @@
 
         <Button x:Name="btnAgregar" VerticalAlignment="Top" Click="btnAgregar_Click" Grid.Column="1" Grid.Row="4" Width="80"  Height="30" FontSize="16" Foreground="Blue">Agregar</Button>
         <Button x:Name="btnSacar" VerticalAlignment="Top" Click="btnSacar_Click" Grid.Column="2" Grid.Row="4" Width="80"  Height="30" FontSize="16" Foreground="Blue">Sacar</Button>
+        <Button x:Name="btnEjecutarStore" Margin="0,1,0,1" Click="btnEjecutarStore_Click" Grid.Column="2" Grid.Row="2" Width="80"  Height="30" FontSize="16" Foreground="Blue">Store</Button>
 
         <ListBox Name="lstListado" Background="Aqua" Grid.Column="1" Grid.Row="4" Margin="10,40,10,10">
             <ListBox.ItemTemplate>
