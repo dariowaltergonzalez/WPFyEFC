@@ -172,21 +172,20 @@ namespace WPF
             // Las 2 carpetas de llaman...Importaciones de funciones....y...funciones/procedimientos almacenados
             using (DapperEntities DB = new DapperEntities())
             {
-                // funciona ok
+                // funciona ok.
                 //var retorno = DB.sp_usuariosbox_Insert("JHONY","PASS2222",true,false,1,1);
                 //var qty = retorno.ToString();
 
+                // funciona ok.
+                //var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
+                //var nombre_user = nombre.Single();  // string nombre_user = nombre.FirstOrDefault(); tambien funciona
+                //string nombrecompleto = nombre_user + " " + " CASTRO";
 
-                // n o anda..ver..
-                //var listausuarios = DB.sp_usuariosbox_SelectAll(1);
-                //int qtyretorno = listausuarios.Count();
-
-                // n o anda..ver..
-                var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
-                var apellido = nombre.ToString() + " " + " CASTRO" ;
-
+                // funciona ok..el store retorna una lista de nombre con el comando "select Nombre From ....." 
+                //List<string> miLista = new List<string>();
+                //var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
+                //miLista = nombre.ToList();
             }
-
         }
     }
 }
