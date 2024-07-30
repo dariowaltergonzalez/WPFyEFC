@@ -28,7 +28,6 @@ namespace WPF
         //public List<roles_por_usuario> ListaRolesPorUsuario { get; set; }
         public List<usuariosBox> ListaUsuarios2 { get; set; }
 
-
         public RolesxUsuario()
         {
             InitializeComponent();
@@ -176,16 +175,50 @@ namespace WPF
                 //var retorno = DB.sp_usuariosbox_Insert("JHONY","PASS2222",true,false,1,1);
                 //var qty = retorno.ToString();
 
-                // funciona ok.
+                // funciona ok. SELECT NOMBRE FROM ..el store devuelve una columna de un solo registro
                 //var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
                 //var nombre_user = nombre.Single();  // string nombre_user = nombre.FirstOrDefault(); tambien funciona
                 //string nombrecompleto = nombre_user + " " + " CASTRO";
 
-                // funciona ok..el store retorna una lista de nombre con el comando "select Nombre From ....." 
+                // funciona ok..el store retorna una columna de nombres (una lista) con el comando "select Nombre From ....." 
                 //List<string> miLista = new List<string>();
                 //var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
                 //miLista = nombre.ToList();
+                //lstListado3.ItemsSource = miLista;
+
+
+
+                // ....probando
+                List<Gente> miListaGente = new List<Gente>();
+ 
+                var retorno = DB.sp_usuariosbox_SelectByPass("PASS2222");
+                
+                string id = "";
+                foreach (string item in retorno) 
+                {
+                    id = item;
+                }
+
+                    
+                    //string[] authorsList = item.Split(", ");
+       
+
+                //miListaGente.Add(new Gente
+                //{
+                //    GenteID = item,
+                //    Nombre = "I'm Gonna Be (500 Miles)"
+                //});
+
+
+                lstListado3.ItemsSource = miListaGente;
+                // System.Data.Entity.Core.Objects.ObjectResult<string>
             }
         }
+    }
+
+    public class Gente
+    {
+        public string GenteID { get; set; }
+        public string Nombre { get; set; }
     }
 }

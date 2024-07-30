@@ -71,8 +71,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox Name="lstListado2" Background="Aqua" Grid.Column="2" Grid.Row="4" Margin="10,40,10,10">
-        </ListBox>
+        <ListBox Name="lstListado2" Background="Aqua" Grid.Column="2" Grid.Row="4" Height="100" VerticalAlignment="Top" Margin="10,40,10,10"></ListBox>
+        <ListBox Name="lstListado3" Background="Aqua" Grid.Column="2" Grid.Row="4" Height="100" VerticalAlignment="Bottom" Margin="10,40,10,10"></ListBox>
 
         <TextBlock Grid.ColumnSpan="1" Margin="4,4,4,4" FontSize="20" Grid.Column="4" Grid.Row="2" Height="30" Width="150" Background="Gainsboro" VerticalAlignment="Center" HorizontalAlignment="Center">Roles Asignados</TextBlock>
        
