@@ -21,7 +21,15 @@ namespace EFC
         public Nullable<bool> UsuarioBloqueado { get; set; }
         public Nullable<int> IdSucursal { get; set; }
         public Nullable<int> rolesBoxId { get; set; }
-    
+
+        public string Detalles
+        {
+            get
+            {
+                return String.Format("{0} tiene contraseña: {1}.", this.Nombre, this.Pass);
+            }
+        }
+
         public virtual sucursalesBox sucursalesBox { get; set; }
         public virtual rolesBox rolesBox { get; set; }
     }
