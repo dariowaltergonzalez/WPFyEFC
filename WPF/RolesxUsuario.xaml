@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="RolesxUsuario">
 
     <Grid Background="Gainsboro">
@@ -19,6 +19,8 @@
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -46,7 +48,7 @@
 
         <TextBlock Grid.ColumnSpan="1" Margin="4,4,4,4" FontSize="20" Grid.Column="0" Grid.Row="2" Height="30" Width="50" Background="Gainsboro" VerticalAlignment="Center" HorizontalAlignment="Center">Roles</TextBlock>
         <TextBox x:Name="txtNumero"  MaxLength="10" Grid.Column="1" Grid.Row="2" PreviewTextInput="txtNumero_PreviewTextInput" ></TextBox>
-        <ListBox x:Name="lstRoles" SelectionMode="Multiple" Grid.Column="0" Grid.Row="3" Margin="5">
+        <ListBox x:Name="lstRoles" SelectionMode="Multiple" Grid.Column="0" Grid.Row="4" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox   Content="{Binding Nombre}" Tag="{Binding Id}" 
@@ -56,8 +58,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button x:Name="btnAgregar" VerticalAlignment="Top" Click="btnAgregar_Click" Grid.Column="1" Grid.Row="4" Width="80"  Height="30" FontSize="16" Foreground="Blue">Agregar</Button>
-        <Button x:Name="btnSacar" VerticalAlignment="Top" Click="btnSacar_Click" Grid.Column="2" Grid.Row="4" Width="80"  Height="30" FontSize="16" Foreground="Blue">Sacar</Button>
+        <Button x:Name="btnAgregar" VerticalAlignment="Top" Click="btnAgregar_Click" Grid.Column="1" Grid.Row="3" Width="80"  Height="30" FontSize="16" Foreground="Blue">Agregar</Button>
+        <Button x:Name="btnSacar" VerticalAlignment="Top" Click="btnSacar_Click" Grid.Column="2" Grid.Row="3" Width="80"  Height="30" FontSize="16" Foreground="Blue">Sacar</Button>
         <Button x:Name="btnEjecutarStore" Margin="0,1,0,1" Click="btnEjecutarStore_Click" Grid.Column="2" Grid.Row="2" Width="80"  Height="30" FontSize="16" Foreground="Blue">Store</Button>
 
         <ListBox Name="lstListado" Background="Aqua" Grid.Column="1" Grid.Row="4" Margin="10,40,10,10">
@@ -76,7 +78,7 @@
 
         <TextBlock Grid.ColumnSpan="1" Margin="4,4,4,4" FontSize="20" Grid.Column="4" Grid.Row="2" Height="30" Width="150" Background="Gainsboro" VerticalAlignment="Center" HorizontalAlignment="Center">Roles Asignados</TextBlock>
        
-        <ListBox x:Name="lstRoles2" SelectionMode="Multiple" Grid.Column="4" Grid.Row="3" Margin="5">
+        <ListBox x:Name="lstRoles2" SelectionMode="Multiple" Grid.Column="4" Grid.Row="4" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox   Content="{Binding Nombre}" Tag="{Binding Id}" 
@@ -85,6 +87,24 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <DataGrid Name="dgSimple" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" 
+                 CanUserAddRows="False" IsReadOnly="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Pass" Binding="{Binding Pass}" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Activo" Binding="{Binding Activo}" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Marcar" IsReadOnly="False"/>
+                <!--<DataGridTemplateColumn Header="Birthday">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 

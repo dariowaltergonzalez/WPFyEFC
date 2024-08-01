@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ejemplos.xaml.cs">
+      <DependentUpon>Ejemplos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PasswordBoxAssistant.cs" />
     <Compile Include="RolesxUsuario.xaml.cs">
       <DependentUpon>RolesxUsuario.xaml</DependentUpon>
@@ -72,6 +75,10 @@
     <Compile Include="Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ejemplos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

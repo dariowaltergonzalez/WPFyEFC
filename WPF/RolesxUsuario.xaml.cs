@@ -51,6 +51,7 @@ namespace WPF
             {
                 ListaUsuarios2 = DB.usuariosBox.ToList();
                 lstListado.ItemsSource = ListaUsuarios2;
+                dgSimple.ItemsSource = ListaUsuarios2;
             }
         }
 
