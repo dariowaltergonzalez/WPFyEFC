@@ -215,6 +215,15 @@ namespace WPF
                 // System.Data.Entity.Core.Objects.ObjectResult<string>
             }
         }
+
+        private void btnLlamarStore_Click(object sender, RoutedEventArgs e)
+        {
+            using (DapperEntities DB = new DapperEntities())
+            {
+                var retorno = DB.sp_usuariosbox_SelectAll(1).ToList();
+            }
+            
+        }
     }
 
     public class Gente

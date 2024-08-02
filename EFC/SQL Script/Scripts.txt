@@ -20,3 +20,16 @@ Begin
 
 End
 GO
+
+
+
+--EXEC sp_usuariosbox_SelectAll 1
+ALTER Procedure [dbo].[sp_usuariosbox_SelectAll]
+	@IdSucursal int
+As
+Begin
+	
+	SELECT Nombre,Pass, Activo, UsuarioBloqueado, IdSucursal, rolesBoxId
+	FROM  usuariosbox
+
+End
