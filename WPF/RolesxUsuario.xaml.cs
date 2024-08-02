@@ -218,6 +218,19 @@ namespace WPF
 
         private void btnLlamarStore_Click(object sender, RoutedEventArgs e)
         {
+            // pasos:
+            // 1. Crear el store en sql
+            // 2. Actualizar el archivo Modelo.edmx, boton derecho, "Actualizar modelo desde base de datos.."
+            //    TAB "Agregar", seleccionar Funciones y procedimientos almacenados, dbo, elegir el nuevo store marcandolo (sp_usuariosbox_SelectAll_SomeColumns)
+            //    Aceptamos y Guardamos el archivo.
+            //    Ya podriamos ver los nuevos archivos. Uno de ello en una nueva clase parcial "public partial class sp_usuariosbox_SelectAll_SomeColumns_Result".
+            // 3. A continuacion podemos llamar al nuevo store como se muestra a continuacion.
+            // 
+            // Si se llega a modificar el store (agregar parametros o columnas), debemos eliminar todas las referencias al store en el modelo, Guardar el modelo
+            // y ahi recien intentar agregarlo nuevamente
+
+            // Para eliminar el archivo..
+            //Menu..Ver.. otras ventanas..Explorador de Entity Data Model. Ahi buscamos el store y lo borramos (suele aparecer en 2 o 3 lugares.)
             using (DapperEntities DB = new DapperEntities())
             {
                 var retorno = DB.sp_usuariosbox_SelectAll(1).ToList();
@@ -225,7 +238,7 @@ namespace WPF
 
             using (DapperEntities DB = new DapperEntities())
             {
-                var retorno = DB.sp_usuariosbox_SelectAll_SomeColumns(1).ToList();
+                List<sp_usuariosbox_SelectAll_SomeColumns_Result> listausuarios = DB.sp_usuariosbox_SelectAll_SomeColumns(1).ToList();
             }
 
         }
