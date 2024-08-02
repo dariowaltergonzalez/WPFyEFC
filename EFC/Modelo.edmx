@@ -66,6 +66,9 @@
         <Function Name="sp_usuariosbox_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdSucursal" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_usuariosbox_SelectAll_SomeColumns" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_usuariosbox_SelectByPass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Pass" Type="nvarchar" Mode="In" />
         </Function>
@@ -144,7 +147,10 @@
           <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_usuariosbox_SelectByPass" ReturnType="Collection(String)">
-            <Parameter Name="Pass" Mode="In" Type="String" />
+          <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_usuariosbox_SelectAll_SomeColumns" ReturnType="Collection(DapperModel.sp_usuariosbox_SelectAll_SomeColumns_Result)">
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="rolesBox">
@@ -174,6 +180,10 @@
           <Property Type="Boolean" Name="UsuarioBloqueado" Nullable="true" />
           <Property Type="Int32" Name="IdSucursal" Nullable="true" />
           <Property Type="Int32" Name="rolesBoxId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_usuariosbox_SelectAll_SomeColumns_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pass" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -224,6 +234,14 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_usuariosbox_SelectByPass" FunctionName="DapperModel.Store.sp_usuariosbox_SelectByPass" />
+          <FunctionImportMapping FunctionImportName="sp_usuariosbox_SelectAll_SomeColumns" FunctionName="DapperModel.Store.sp_usuariosbox_SelectAll_SomeColumns">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DapperModel.sp_usuariosbox_SelectAll_SomeColumns_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

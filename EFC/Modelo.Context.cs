@@ -77,5 +77,14 @@ namespace EFC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_usuariosbox_SelectByPass", passParameter);
         }
+    
+        public virtual ObjectResult<sp_usuariosbox_SelectAll_SomeColumns_Result> sp_usuariosbox_SelectAll_SomeColumns(Nullable<int> idSucursal)
+        {
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_usuariosbox_SelectAll_SomeColumns_Result>("sp_usuariosbox_SelectAll_SomeColumns", idSucursalParameter);
+        }
     }
 }

@@ -10,19 +10,10 @@
 namespace EFC
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class usuariosBox
+    public partial class sp_usuariosbox_SelectAll_SomeColumns_Result
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Pass { get; set; }
-        public Nullable<bool> Activo { get; set; }
-        public Nullable<bool> UsuarioBloqueado { get; set; }
-        public Nullable<int> IdSucursal { get; set; }
-        public Nullable<int> rolesBoxId { get; set; }
-    
-        public virtual sucursalesBox sucursalesBox { get; set; }
-        public virtual rolesBox rolesBox { get; set; }
     }
 }

@@ -222,7 +222,12 @@ namespace WPF
             {
                 var retorno = DB.sp_usuariosbox_SelectAll(1).ToList();
             }
-            
+
+            using (DapperEntities DB = new DapperEntities())
+            {
+                var retorno = DB.sp_usuariosbox_SelectAll_SomeColumns(1).ToList();
+            }
+
         }
     }
 

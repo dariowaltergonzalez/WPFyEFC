@@ -33,3 +33,15 @@ Begin
 	FROM  usuariosbox
 
 End
+
+
+--EXEC sp_usuariosbox_SelectAll_SomeColumns 1
+ALTER Procedure [dbo].[sp_usuariosbox_SelectAll_SomeColumns]
+	@IdSucursal int
+As
+Begin
+	
+	SELECT Nombre,Pass
+	FROM  usuariosbox
+
+End
