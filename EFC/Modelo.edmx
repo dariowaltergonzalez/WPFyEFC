@@ -30,6 +30,7 @@
           <Property Name="UsuarioBloqueado" Type="bit" />
           <Property Name="IdSucursal" Type="int" />
           <Property Name="rolesBoxId" Type="int" />
+          <Property Name="FechaAlta" Type="datetime" />
         </EntityType>
         <Association Name="FK_rolesBoxusuariosBox">
           <End Role="rolesBox" Type="Self.rolesBox" Multiplicity="0..1" />
@@ -110,6 +111,7 @@
           <NavigationProperty Name="sucursalesBox" Relationship="Self.FK_usuariosBox_sucursalesBox" FromRole="usuariosBox" ToRole="sucursalesBox" />
           <NavigationProperty Name="rolesBox" Relationship="DapperModel.rolesBoxusuariosBox" FromRole="usuariosBox" ToRole="rolesBox" />
           <Property Name="rolesBoxId" Type="Int32" Nullable="true" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_usuariosBox_sucursalesBox">
           <End Role="sucursalesBox" Type="Self.sucursalesBox" Multiplicity="0..1" />
@@ -150,7 +152,7 @@
           <Parameter Name="Pass" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_usuariosbox_SelectAll_SomeColumns" ReturnType="Collection(DapperModel.sp_usuariosbox_SelectAll_SomeColumns_Result)">
-            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+          <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="rolesBox">
@@ -202,7 +204,8 @@
     <EntitySetMapping Name="usuariosBox">
       <EntityTypeMapping TypeName="IsTypeOf(DapperModel.usuariosBox)">
         <MappingFragment StoreEntitySet="usuariosBox">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Pass" ColumnName="Pass" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />

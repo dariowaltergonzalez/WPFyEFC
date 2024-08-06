@@ -97,6 +97,7 @@
                 <DataGridTextColumn Header="Nombre"  Width="100" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Pass" Width="100" Binding="{Binding Pass}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Activo" Width="60" Binding="{Binding Activo}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fecha Alta" Width="120" Binding="{Binding FechaAlta,StringFormat={}\{0:MM/dd/yyyy HH:MM\}}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Marcar" Width="60" IsReadOnly="False"/>
                 <DataGridTemplateColumn Header="Birthday" Width="100">
                     <DataGridTemplateColumn.CellTemplate>

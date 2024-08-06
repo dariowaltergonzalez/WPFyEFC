@@ -21,6 +21,7 @@ namespace EFC
         public Nullable<bool> UsuarioBloqueado { get; set; }
         public Nullable<int> IdSucursal { get; set; }
         public Nullable<int> rolesBoxId { get; set; }
+        public Nullable<System.DateTime> FechaAlta { get; set; }
     
         public virtual sucursalesBox sucursalesBox { get; set; }
         public virtual rolesBox rolesBox { get; set; }
