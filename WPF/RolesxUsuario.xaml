@@ -3,10 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF"
+      xmlns:local="clr-namespace:WPF.Conversores"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="800"
       Title="RolesxUsuario">
+    <Page.Resources>
+        <local:Converter x:Key="conv"/>
+    </Page.Resources>
 
     <Grid Background="Gainsboro">
         <Grid.ColumnDefinitions>
@@ -16,11 +19,12 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -97,7 +101,7 @@
                 <DataGridTextColumn Header="Nombre"  Width="100" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Pass" Width="100" Binding="{Binding Pass}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Activo" Width="60" Binding="{Binding Activo}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Fecha Alta" Width="120" Binding="{Binding FechaAlta,StringFormat={}\{0:MM/dd/yyyy HH:MM\}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fecha Alta" Width="120" Binding="{Binding FechaAlta,StringFormat={}\{0:dd/MM/yyyy HH:MM\}}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Marcar" Width="60" IsReadOnly="False"/>
                 <DataGridTemplateColumn Header="Birthday" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
@@ -112,6 +116,14 @@
                     <TextBlock Text="{Binding Detalles}" Margin="10" />
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
+        <DataGrid x:Name="dataGrid" Grid.Column="0" Grid.Row="6" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="CellOrRowHeader">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Width="80" Binding="{Binding DataNumber}"/>
+                <DataGridTextColumn Header="DataFormate" Width="80" 
+                                    Binding="{Binding DataNumber, Converter={StaticResource conv}}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
         <Button x:Name="btnLlamarStore" Margin="0,1,0,1" Click="btnLlamarStore_Click" Grid.Column="3" Grid.Row="5" Width="80"  Height="30" FontSize="16" Foreground="Blue">Store</Button>

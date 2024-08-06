@@ -1,6 +1,8 @@
 ﻿using EFC;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -36,6 +38,18 @@ namespace WPF
             LlenarListaUsuario();
             LlenarLista2();
 
+            ObservableCollection<Member> memberData = new ObservableCollection<Member>()
+            {
+                new Member(){DataNumber = "150,1200"},
+                new Member(){DataNumber = "150,13699"},
+                new Member(){DataNumber = "150,110"},
+                new Member(){DataNumber = "12,000"},
+                new Member(){DataNumber = "61,333"},
+                new Member(){DataNumber = "72,100"}
+            };
+            dataGrid.DataContext = memberData;
+
+
         }
         private void LlenarLista2()
         {
@@ -45,7 +59,7 @@ namespace WPF
 
         }
 
-        private void LlenarListaUsuario() 
+        private void LlenarListaUsuario()
         {
             using (DapperEntities DB = new DapperEntities())
             {
@@ -57,7 +71,7 @@ namespace WPF
 
         private void LlenarListaRoles()
         {
-            using (DapperEntities DB = new DapperEntities()) 
+            using (DapperEntities DB = new DapperEntities())
             {
                 ListaRoles = DB.rolesBox.ToList();
                 lstRoles.ItemsSource = ListaRoles;
@@ -249,4 +263,11 @@ namespace WPF
         public string GenteID { get; set; }
         public string Nombre { get; set; }
     }
+
+    public class Member
+    {
+        public string DataNumber { get; set; }
+    }
+
+    
 }
