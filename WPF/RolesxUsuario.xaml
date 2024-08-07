@@ -126,7 +126,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnLlamarStore" Margin="0,1,0,1" Click="btnLlamarStore_Click" Grid.Column="3" Grid.Row="5" Width="80"  Height="30" FontSize="16" Foreground="Blue">Store</Button>
+        <Button x:Name="btnLlamarStore" ToolTip="Ejecuta el store.." Margin="0,1,0,1" Click="btnLlamarStore_Click" Grid.Column="3" Grid.Row="5" Width="80"  Height="30" FontSize="16" Foreground="Blue">_Store</Button>
 
     </Grid>
 
