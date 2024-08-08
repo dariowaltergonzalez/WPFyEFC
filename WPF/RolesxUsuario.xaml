@@ -9,7 +9,10 @@
       Title="RolesxUsuario">
     <Page.Resources>
         <local:Converter x:Key="conv"/>
+
     </Page.Resources>
+
+
 
     <Grid Background="Gainsboro">
         <Grid.ColumnDefinitions>
@@ -127,7 +130,11 @@
         </DataGrid>
 
         <Button x:Name="btnLlamarStore" ToolTip="Ejecuta el store.." Margin="0,1,0,1" Click="btnLlamarStore_Click" Grid.Column="3" Grid.Row="5" Width="80"  Height="30" FontSize="16" Foreground="Blue">_Store</Button>
-
+        
+        <StackPanel Grid.Column="3" Grid.Row="6" Margin="10">
+            <!--<Image x:Name="img" Source="C:\Images\loguito.png"/>-->
+            <Image Source="C:\Users\Administrador\source\repos\WPFyEFC\loguito.png"/>
+        </StackPanel>
     </Grid>
 
 </Page>
