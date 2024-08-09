@@ -133,7 +133,8 @@
         
         <StackPanel Grid.Column="3" Grid.Row="6" Margin="10">
             <!--<Image x:Name="img" Source="C:\Images\loguito.png"/>-->
-            <Image Source="C:\Users\Administrador\source\repos\WPFyEFC\loguito.png"/>
+            <!--<Image Source="C:\Users\Administrador\source\repos\WPFyEFC\WPF\Imagenes\loguito.png"/>-->
+            <Image Source="Imagenes\loguito.png"/>
         </StackPanel>
     </Grid>
 
