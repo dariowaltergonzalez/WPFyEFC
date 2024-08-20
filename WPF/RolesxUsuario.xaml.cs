@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -195,38 +197,19 @@ namespace WPF
                 //var nombre_user = nombre.Single();  // string nombre_user = nombre.FirstOrDefault(); tambien funciona
                 //string nombrecompleto = nombre_user + " " + " CASTRO";
 
-                // funciona ok..el store retorna una columna de nombres (una lista) con el comando "select Nombre From ....." 
+                //funciona ok..el store retorna una columna de nombres(una lista) con el comando "select Nombre From ....."
                 //List<string> miLista = new List<string>();
                 //var nombre = DB.sp_usuariosbox_SelectByPass("PASS2222");
                 //miLista = nombre.ToList();
                 //lstListado3.ItemsSource = miLista;
 
 
-
-                // ....probando
-                List<Gente> miListaGente = new List<Gente>();
- 
-                var retorno = DB.sp_usuariosbox_SelectByPass("PASS2222");
-                
-                string id = "";
-                foreach (string item in retorno) 
-                {
-                    id = item;
-                }
-
-                    
-                    //string[] authorsList = item.Split(", ");
-       
-
-                //miListaGente.Add(new Gente
-                //{
-                //    GenteID = item,
-                //    Nombre = "I'm Gonna Be (500 Miles)"
-                //});
-
-
-                lstListado3.ItemsSource = miListaGente;
-                // System.Data.Entity.Core.Objects.ObjectResult<string>
+                //funciona ok..el store retorna un valor entero (Output)
+                bool activo = true;
+                int ret = 0;
+                ObjectParameter ParamRetorno = new ObjectParameter("retorno", ret);
+                DB.sp_usuariosbox_ReturnValue(Convert.ToBoolean(activo), ParamRetorno);
+                txtRetornoStore.Text = ((int)ParamRetorno.Value).ToString();
             }
         }
 

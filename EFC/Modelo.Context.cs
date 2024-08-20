@@ -86,5 +86,14 @@ namespace EFC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_usuariosbox_SelectAll_SomeColumns_Result>("sp_usuariosbox_SelectAll_SomeColumns", idSucursalParameter);
         }
+    
+        public virtual int sp_usuariosbox_ReturnValue(Nullable<bool> activo, ObjectParameter retorno)
+        {
+            var activoParameter = activo.HasValue ?
+                new ObjectParameter("activo", activo) :
+                new ObjectParameter("activo", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_usuariosbox_ReturnValue", activoParameter, retorno);
+        }
     }
 }

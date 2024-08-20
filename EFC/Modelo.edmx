@@ -64,6 +64,10 @@
           <Parameter Name="IdSucursal" Type="int" Mode="In" />
           <Parameter Name="rolesBoxId" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_usuariosbox_ReturnValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="activo" Type="bit" Mode="In" />
+          <Parameter Name="retorno" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="sp_usuariosbox_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdSucursal" Type="int" Mode="In" />
         </Function>
@@ -153,6 +157,10 @@
           </FunctionImport>
           <FunctionImport Name="sp_usuariosbox_SelectAll_SomeColumns" ReturnType="Collection(DapperModel.sp_usuariosbox_SelectAll_SomeColumns_Result)">
           <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_usuariosbox_ReturnValue">
+            <Parameter Name="activo" Mode="In" Type="Boolean" />
+            <Parameter Name="retorno" Mode="InOut" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="rolesBox">
@@ -245,6 +253,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_usuariosbox_ReturnValue" FunctionName="DapperModel.Store.sp_usuariosbox_ReturnValue" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -258,7 +267,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

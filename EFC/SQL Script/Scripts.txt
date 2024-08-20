@@ -45,3 +45,22 @@ Begin
 	FROM  usuariosbox
 
 End
+
+
+
+--Declare @r INT EXEC sp_usuariosbox_ReturnValue 1,@retorno=@r Output Select R=@r
+--Declare @r INT EXEC sp_usuariosbox_ReturnValue 0,@retorno=@r Output Select R=@r
+
+ALTER Procedure [dbo].[sp_usuariosbox_ReturnValue]
+	@activo bit,
+	@retorno int Output
+As
+Begin
+	
+	SET NOCOUNT ON
+
+	SELECT @retorno = COUNT(Id)
+	FROM  usuariosbox
+	WHERE Activo = @activo
+
+End
